@@ -1,0 +1,84 @@
+/* Password strength container */
+.password-strength-container {
+  margin-top: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.password-strength {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.password-requirements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.requirement {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.requirement.met {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.requirement.unmet {
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.check-icon {
+  width: 14px;
+  height: 14px;
+  color: #10b981;
+}
+
+.x-icon {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive adjustments for password requirements */
+@media (max-width: 480px) {
+  .password-requirements {
+    grid-template-columns: 1fr;
+  }
+  
+  .password-strength-container {
+    padding: 12px;
+  }
+}
+
+/* Animation for password strength indicator */
+.password-strength-container {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Enhanced form styling for register */
+.auth-form .form-group:nth-child(3) {
+  margin-bottom: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px;
+  }
+  
+  .form-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+} 

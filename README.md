@@ -246,3 +246,81 @@ This project is licensed under the MIT License.
 ---
 
 **Built with ❤️ and security in mind** 
+
+---
+
+## How to Fix
+
+### 1. **Clear Cookies and Local Storage**
+- Your browser may have an old session cookie from localhost or a previous deployment.
+- **Action:**  
+  - Open your browser’s DevTools (F12) → Application/Storage tab.
+  - Clear cookies and local storage for both:
+    - `https://secret-web-app-1.onrender.com`
+    - `https://secret-web-app.onrender.com`
+  - Refresh the page.
+
+---
+
+### 2. **Check CORS and Cookie Settings**
+
+- Your backend must allow credentials (cookies) from your frontend.
+- Your frontend axios config should have:
+  ```js
+  axios.defaults.withCredentials = true;
+  ```
+- Your backend CORS config should look like:
+  ```js
+  app.use(cors({
+    origin: 'https://secret-web-app-1.onrender.com',
+    credentials: true
+  }));
+  ```
+- **Double-check:**  
+  - `CORS_ORIGIN` is set to `https://secret-web-app-1.onrender.com` in backend environment variables.
+  - Backend is redeployed after this change.
+
+---
+
+### 3. **Check AuthContext Logic**
+
+- On app load, your frontend calls `/api/profile` to check if the user is authenticated.
+- If the backend does not return a valid user, the frontend should redirect to `/login`.
+
+**If you see the dashboard with empty data, it means:**
+- The `/api/profile` call is returning a 200 response, but with missing or invalid user data.
+
+---
+
+### 4. **Test the API Directly**
+
+- Open your browser and go to:  
+  `https://secret-web-app.onrender.com/api/profile`
+- Do you get a valid JSON with user info, or an error/empty object?
+- If you get an error, your session is not set up correctly.
+
+---
+
+### 5. **Force Logout and Try Again**
+
+- Click the Logout button.
+- You should be redirected to the login page.
+- Try logging in again.
+
+---
+
+## **Summary Table of What to Check**
+
+| Step                | What to Do                                                                 |
+|---------------------|----------------------------------------------------------------------------|
+| Clear Cookies       | Remove cookies/local storage for both frontend and backend URLs             |
+| CORS Config         | Backend: `origin` set to frontend URL, `credentials: true`                 |
+| Axios Config        | Frontend: `axios.defaults.withCredentials = true`                          |
+| Test /api/profile   | Should return user info if logged in, error if not                         |
+| Logout/Login Flow   | Should redirect to login if not authenticated                              |
+
+---
+
+**If you follow these steps, you should see the login page if not authenticated, and valid user info if logged in.**
+
+If you still have issues, let me know what you see at `/api/profile` and after clearing cookies! 

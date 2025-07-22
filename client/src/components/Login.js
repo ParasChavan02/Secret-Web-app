@@ -61,6 +61,7 @@ const Login = () => {
     setIsLoading(true);
     
     try {
+      const API_URL = process.env.REACT_APP_API_URL;
       const result = await login(formData);
       if (result.success) {
         navigate('/dashboard');

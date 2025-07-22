@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
 
   // Configure axios defaults
   axios.defaults.withCredentials = true;
+  axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'https://secret-web-app.onrender.com';
 
   // Check authentication status on app load
   useEffect(() => {

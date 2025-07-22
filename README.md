@@ -1,5 +1,7 @@
 # 🔐 Secrets - Secure Web Application
 
+[🚀 **Live App: https://secret-web-app.onrender.com**](https://secret-web-app.onrender.com)
+
 A modern, secure web application for sharing and managing secrets with robust authentication and comprehensive security measures.
 
 ## ✨ Features
@@ -59,7 +61,7 @@ A modern, secure web application for sharing and managing secrets with robust au
    echo "PORT=5000
    NODE_ENV=development
    JWT_SECRET=your-super-secret-jwt-key-change-in-production
-   CORS_ORIGIN=http://localhost:3000
+   CORS_ORIGIN=https://secret-web-app.onrender.com
    RATE_LIMIT_WINDOW_MS=900000
    RATE_LIMIT_MAX_REQUESTS=100" > .env
    ```
@@ -256,7 +258,7 @@ This project is licensed under the MIT License.
 - **Action:**  
   - Open your browser’s DevTools (F12) → Application/Storage tab.
   - Clear cookies and local storage for both:
-    - `https://secret-web-app-1.onrender.com`
+    - `https://secret-web-app.onrender.com`
     - `https://secret-web-app.onrender.com`
   - Refresh the page.
 
@@ -272,12 +274,12 @@ This project is licensed under the MIT License.
 - Your backend CORS config should look like:
   ```js
   app.use(cors({
-    origin: 'https://secret-web-app-1.onrender.com',
+    origin: 'https://secret-web-app.onrender.com',
     credentials: true
   }));
   ```
 - **Double-check:**  
-  - `CORS_ORIGIN` is set to `https://secret-web-app-1.onrender.com` in backend environment variables.
+  - `CORS_ORIGIN` is set to `https://secret-web-app.onrender.com` in backend environment variables.
   - Backend is redeployed after this change.
 
 ---
